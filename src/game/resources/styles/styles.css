@@ -1,0 +1,23 @@
+.generationCounter-style {
+    -fx-min-height: 50px; 
+    -fx-text-alignment: center;
+}
+.btn {
+    -fx-cursor: hand; 
+    -fx-background-color: #bbfdff;
+    -fx-text-fill: #11676a;
+    -fx-min-width: 150px;
+    -fx-transition: any; /* Defines a transition for background-color */
+    -fx-transition-duration: 0.5s;
+}
+.btn:hover {
+    -fx-background-color: #1dd0d6;
+    -fx-text-fill: #fff;
+}
+.vbox {
+    -fx-background-color: #126669;
+    -fx-padding: 50 20 00 00;
+}
+.gameScene-pane {
+    -fx-background-color: #23bfc4;
+}
