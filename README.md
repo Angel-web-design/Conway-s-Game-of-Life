@@ -10,7 +10,7 @@
 
 
 ### **What's Conway's Game of Life?**
-The Game of Life is a `Cellular Automata` (a mathematical and computational model that evolves over time by applying a basic set of rules).
+The Game of Life is a `Cellular Automaton` (a mathematical and computational model that evolves over time by applying a basic set of rules).
 It consists of a regular grid made of cells. Each of those cells can be in one of two states: Dead or Alive. 
 The complete set of cells is called a `Generation`. 
 Each generation, the model determines the state of the cell for the next generation, 
