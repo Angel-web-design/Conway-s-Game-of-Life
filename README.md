@@ -17,10 +17,10 @@ Each generation, the model determines the state of the cell for the next generat
 by checking the state of all their `Neighbors cells` (8 in total including the diagonals) and applying the following rules according to the 
 number of alive neighbors and the current state of the cell:
 <br>
-- **Survival:** If the Cell is `Alive`, and has two or three alive neighbors, it will be `Alive` in the next generation.
-- **Overpopulation:** If the Cell is `Alive` but has more than three alice neighbors, it will be `Dead` in the next generation.
-- **Isolation:** If the Cell is `Alive` but has less than two alive neighbors, it will be `Dead` in the next generation.
-- **Birth:** If the Cell is `Dead`, but has exactly three neighbors alive, it will be `Alive` in the next generation.
+- **Survival:** If the Cell is `Alive`, and has two or three `Alive` neighbors, it will be `Alive` in the next generation.
+- **Overpopulation:** If the Cell is `Alive` but has more than three `Alive` neighbors, it will be `Dead` in the next generation.
+- **Isolation:** If the Cell is `Alive` but has less than two `Alive` neighbors, it will be `Dead` in the next generation.
+- **Birth:** If the Cell is `Dead`, but has exactly three neighbors `Alive`, it will be `Alive` in the next generation.
 
 <hr>
 
@@ -37,14 +37,18 @@ number of alive neighbors and the current state of the cell:
 ## **(Coded using the JavaFX library)**
 <hr>
 
-### **JVM configurations needed:** 
+### **JVM and project's configurations needed (Intellij IDEA):** 
 
+``` java
+--module-path "$JAVAFX_HOME$\lib" --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics
 ```
-    --module-path %JAVAFX_HOME%\lib --add-modules javafx.controls,javafx.fxml --enable-native-access=javafx.graphics
+
+**\$JAVAFX_HOME$:** Environment variable that contains the path to the javafx home directory. 
+It has to be added to the IDE environment variables.
+
+``` java
+JAVAFX_HOME=C:\Java\javafx-sdk-25.0.1
 ```
-
-***%JAVAFX_HOME%:*** Environment variable that contains the path to the javafx home directory.
-
 
 
 
