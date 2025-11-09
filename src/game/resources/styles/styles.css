@@ -7,7 +7,7 @@
     -fx-background-color: #bbfdff;
     -fx-text-fill: #11676a;
     -fx-min-width: 150px;
-    -fx-transition: any; /* Defines a transition for background-color */
+    -fx-transition: any;
     -fx-transition-duration: 0.5s;
 }
 .btn:hover {
