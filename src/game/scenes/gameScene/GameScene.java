@@ -1,5 +1,6 @@
-package game.gameScene;
+package game.scenes.gameScene;
 
+import game.cellConfigurations.SaveManager;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -10,9 +11,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 import static game.utils.AppParameters.*;
 import static game.utils.ColorPalette.*;
-import static game.gameScene.GenerationalLogic.*;
+import static game.scenes.gameScene.GenerationalLogic.*;
 
 import static game.utils.Assets.customFont;
 
@@ -35,13 +38,15 @@ public class GameScene {
         generations = 0;
     }
 
-    public Scene getGameScene(Stage stage, Scene alternativeScene, double FPS, int simulationSize){
+    public Scene getGameScene(Stage stage, Scene alternativeScene, double FPS, int simulationSize, Cell[][] firstGeneration){
         setSimulationParameters(simulationSize);
 
         Canvas canvas = new Canvas(realWidth, realWidth); // Lienzo (mejor optimización para dibujar muchos trazos)
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        drawFirstGenerationCells(gc); // Generación aleatoria de células para la posición inicial
+        cellMatrix = (firstGeneration == null) ? randomFirstGenerationCells(gc) : firstGeneration;
+        drawGeneration(gc, cellMatrix);
+        // Generación aleatoria de células para la posición inicial
 
         Text generationCounter = new Text("Generations: 0");
         generationCounter.setFont(customFont);
@@ -62,14 +67,20 @@ public class GameScene {
         nextStepBtn.setLayoutX(realWidth - 320);
         nextStepBtn.setLayoutY(realWidth + 7);
 
+        Button saveBtn = new Button("Save");
+        saveBtn.getStyleClass().add("btn");
+        saveBtn.setFont(customFont);
+        saveBtn.setLayoutX(realWidth - 480);
+        saveBtn.setLayoutY(realWidth + 7);
+
         Button menuBtn = new Button("Menu");
         menuBtn.getStyleClass().add("btn");
         menuBtn.setFont(customFont);
-        menuBtn.setLayoutX(realWidth - 480);
+        menuBtn.setLayoutX(realWidth - 640);
         menuBtn.setLayoutY(realWidth + 7);
 
         Pane pane = new Pane();
-        pane.getChildren().addAll(generationCounter, pauseBtn, nextStepBtn, menuBtn);
+        pane.getChildren().addAll(generationCounter, pauseBtn, nextStepBtn, saveBtn, menuBtn);
 
         Group rootGroup = new Group(canvas, pane); // genera un grupo que va a almacenar el canvas y el texto
 
@@ -111,6 +122,14 @@ public class GameScene {
         menuBtn.setOnAction(_ -> {
             timer.stop();
             stage.setScene(alternativeScene);
+        });
+
+        saveBtn.setOnAction(_ -> {
+            try {
+                SaveManager.saveMatrix(cellMatrix, "save.dat");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
 
         return new Scene(rootGroup, realWidth, realWidth + 80, backgroundColor);

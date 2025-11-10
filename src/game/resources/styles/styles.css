@@ -62,3 +62,9 @@
 .gameScene-pane {
     -fx-background-color: #23bfc4;
 }
+.message {
+    -fx-pref-width: 500px;
+    -fx-text-alignment: center;
+    -fx-text-fill: #bbfdff;
+    -fx-wrap-text: true;
+}

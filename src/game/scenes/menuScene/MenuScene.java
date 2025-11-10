@@ -1,6 +1,8 @@
-package game.menuScene;
+package game.scenes.menuScene;
 
-import game.gameScene.GameScene;
+import game.cellConfigurations.SaveManager;
+import game.scenes.gameScene.GameScene;
+import game.scenes.messageScene.MessageScene;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -12,6 +14,9 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.Arrays;
 
 import static game.utils.AppParameters.appInitialWidth;
 import static game.utils.Assets.*;
@@ -32,6 +37,13 @@ public class MenuScene {
         Button playButton = new Button("Start");
         playButton.setFont(customFont);
         playButton.getStyleClass().add("btn");
+
+        Button loadButton = new Button("Load");
+        loadButton.setFont(customFont);
+        loadButton.getStyleClass().add("btn");
+
+        HBox buttonContainer = new HBox(20, playButton, loadButton);
+        buttonContainer.setAlignment(Pos.CENTER);
 
         Spinner<Integer> fpsInput = new Spinner<>();
         fpsInput.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(10, 60, 10)); // min, max, initial
@@ -64,7 +76,7 @@ public class MenuScene {
         HBox inputContainer = new HBox(20, fpsInputLabel, fpsInput, simulationSizeInputLabel, simulationSizeInput);
         inputContainer.setAlignment(Pos.CENTER);
 
-        VBox menuRoot = new VBox(50, canvas, playButton, inputContainer);
+        VBox menuRoot = new VBox(50, canvas, buttonContainer, inputContainer);
         menuRoot.setAlignment(Pos.TOP_CENTER);
         menuRoot.getStyleClass().add("vbox");
 
@@ -73,9 +85,43 @@ public class MenuScene {
         menuScene.getStylesheets().add(StyleSheet);
 
         playButton.setOnAction(_ -> {
-            Scene gameScene = new GameScene().getGameScene(stage, menuScene, (double) fpsInput.getValue(), simulationSizeInput.getValue());
+            Scene gameScene = new GameScene().getGameScene(
+                    stage,
+                    menuScene,
+                    (double) fpsInput.getValue(),
+                    simulationSizeInput.getValue(),
+                    null);
             gameScene.getStylesheets().add(StyleSheet);
             stage.setScene(gameScene); // Cambia la escena actual por gameScene
+        });
+
+        loadButton.setOnAction(_ -> {
+            try {
+                var Matrix = SaveManager.loadMatrix("save.dat");
+                Scene gameScene = new GameScene().getGameScene(
+                        stage,
+                        menuScene,
+                        (double) fpsInput.getValue(),
+                        simulationSizeInput.getValue(),
+                        Matrix);
+                gameScene.getStylesheets().add(StyleSheet);
+
+                if(Matrix == null){
+                    Scene messageScene = new MessageScene().getScene(
+                            stage,
+                            gameScene,
+                            "The initial position hasn't been saved or it's corrupted. You can start the simulation with a randomized position instead.",
+                            "Start");
+                    stage.setScene(messageScene);
+                } else {
+                    stage.setScene(gameScene); // Cambia la escena actual por gameScene
+                }
+                //System.out.println(Arrays.deepToString(Matrix));
+
+
+            } catch (IOException | ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
         });
 
         return menuScene;

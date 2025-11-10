@@ -1,6 +1,6 @@
 package game.utils;
 
-import game.gameScene.Cell;
+import game.scenes.gameScene.Cell;
 
 
 public class AppParameters {

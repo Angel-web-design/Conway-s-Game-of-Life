@@ -1,6 +1,6 @@
 package game;
 
-import game.menuScene.MenuScene;
+import game.scenes.menuScene.MenuScene;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
