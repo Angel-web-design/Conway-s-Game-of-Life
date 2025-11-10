@@ -10,15 +10,15 @@ import static game.utils.AppParameters.*;
 
 public class GenerationalLogic extends GameScene{
     public static void drawFirstGenerationCells(GraphicsContext gc){
-        cellMatrix = new Cell[SIZE][SIZE];
+        cellMatrix = new Cell[SimulationSize][SimulationSize];
         Random random = new Random();
         double coordinateX;
         double coordinateY = 0;
 
-        for (int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < SimulationSize; i++) {
             coordinateX = 0; // Resetea el valor de la coordenada X para cada nueva fila
 
-            for (int j = 0; j < SIZE; j++) {
+            for (int j = 0; j < SimulationSize; j++) {
                 int randomValue = random.nextInt(0, 2); // Valor de vida aleatorio
                 boolean randomLifeState = (randomValue != 0); // 0 -> Falso, 1 -> Verdadero
 
@@ -39,7 +39,7 @@ public class GenerationalLogic extends GameScene{
 
     private static boolean checkForBorders(int i, int j){
         // Verifica si la célula está en un lateral de la matriz
-        return (i == 0 || i == SIZE-1) || (j == 0 || j == SIZE-1);
+        return (i == 0 || i == SimulationSize -1) || (j == 0 || j == SimulationSize -1);
     }
 
     public static void update(GraphicsContext gc, Text generationCounter){
@@ -47,22 +47,22 @@ public class GenerationalLogic extends GameScene{
         gc.fillRect(0, 0, realWidth, realWidth); // Limpia el canvas
 
         setNextGenerationStates(); // Actualiza los valores de la vida de las células en la copia de la matriz
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
+        for (int i = 0; i < SimulationSize; i++) {
+            for (int j = 0; j < SimulationSize; j++) {
                 copyMatrix[i][j].draw(gc); // Dibuja la nueva generación a partir de los valores calculados
             }
         }
         cellMatrix = copyMatrix.clone(); // Clona la copia de la matriz para usarla como referencia en la nueva generación
-        copyMatrix = new Cell[SIZE][SIZE]; // Crea una matriz vacía que se usará para calcular los valores de la siguiente generación
+        copyMatrix = new Cell[SimulationSize][SimulationSize]; // Crea una matriz vacía que se usará para calcular los valores de la siguiente generación
         generations++;
         generationCounter.setText("Generations: " + generations); // Actualiza el contador de generaciones
     }
 
     private static void setNextGenerationStates(){
-        copyMatrix = new Cell[SIZE][SIZE];
+        copyMatrix = new Cell[SimulationSize][SimulationSize];
 
-        for (int i = 0; i < SIZE; i++) {
-            for (int j = 0; j < SIZE; j++) {
+        for (int i = 0; i < SimulationSize; i++) {
+            for (int j = 0; j < SimulationSize; j++) {
                 Cell cell = cellMatrix[i][j];
                 int neighbors = checkNeighbors(i, j); // Calcula los vecinos vivos
                 boolean newState = calculateNewState(cell, neighbors); // Calcula el estado de la célula para la nueva generación

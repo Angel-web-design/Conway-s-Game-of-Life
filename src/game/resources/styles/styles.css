@@ -1,7 +1,45 @@
-.generationCounter-style {
+.text-style {
     -fx-min-height: 50px; 
     -fx-text-alignment: center;
 }
+.label-style {
+    -fx-text-fill: #fff;
+}
+
+.spinner {
+    -fx-border-color: #bbfdff;
+    -fx-border-width: 2px;
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-background-color: #bbfdff;
+    -fx-cursor: hand;
+}
+
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-background-color: #1dd0d6;
+}
+
+.spinner .increment-arrow-button .increment-arrow,
+.spinner .decrement-arrow-button .decrement-arrow {
+    -fx-background-color: #11676a;
+}
+
+.spinner .increment-arrow-button:hover .increment-arrow,
+.spinner .decrement-arrow-button:hover .decrement-arrow {
+    -fx-background-color: #fff;
+}
+
+.spinner .text-field {
+    -fx-background-color: #fff; 
+    -fx-text-fill: #11676a;
+    -fx-background-insets: 0;         /* quita las capas que crean la sombra */
+    -fx-background-radius: 0;         /* bordes rectos */
+    -fx-effect: none;   
+}
+
 .btn {
     -fx-cursor: hand; 
     -fx-background-color: #bbfdff;
@@ -9,10 +47,13 @@
     -fx-min-width: 150px;
     -fx-transition: any;
     -fx-transition-duration: 0.5s;
+    -fx-border-width: 2px;
+    -fx-border-color: #bbfdff;
 }
 .btn:hover {
     -fx-background-color: #1dd0d6;
     -fx-text-fill: #fff;
+    -fx-border-color: #fff;
 }
 .vbox {
     -fx-background-color: #126669;

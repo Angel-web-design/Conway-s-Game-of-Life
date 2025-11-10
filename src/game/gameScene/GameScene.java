@@ -19,15 +19,25 @@ import static game.utils.Assets.customFont;
 public class GameScene {
 
     public static int generations;
+    public static int SimulationSize;
+    public static double cellSize;
+    public static double realWidth; // Tamaño real del Canvas luego de calcular el tamaño de la célula
 
     public GameScene(){
         resetGenerations();
+    }
+    public static void setSimulationParameters(int inputSize){
+        SimulationSize = inputSize;
+        cellSize = (double) appInitialWidth / SimulationSize;
+        realWidth = cellSize * SimulationSize;
     }
     public static void resetGenerations(){
         generations = 0;
     }
 
-    public Scene getGameScene(Stage stage, Scene alternativeScene, double FPS){
+    public Scene getGameScene(Stage stage, Scene alternativeScene, double FPS, int simulationSize){
+        setSimulationParameters(simulationSize);
+
         Canvas canvas = new Canvas(realWidth, realWidth); // Lienzo (mejor optimización para dibujar muchos trazos)
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
@@ -35,7 +45,7 @@ public class GameScene {
 
         Text generationCounter = new Text("Generations: 0");
         generationCounter.setFont(customFont);
-        generationCounter.getStyleClass().add("generationCounter-style");
+        generationCounter.getStyleClass().add("text-style");
         generationCounter.setFill(textColor);
         generationCounter.setLayoutX(10);
         generationCounter.setLayoutY(realWidth + 50);
@@ -44,19 +54,19 @@ public class GameScene {
         pauseBtn.getStyleClass().add("btn");
         pauseBtn.setFont(customFont);
         pauseBtn.setLayoutX(realWidth - 160);
-        pauseBtn.setLayoutY(realWidth + 10);
+        pauseBtn.setLayoutY(realWidth + 7);
 
         Button nextStepBtn = new Button("Step");
         nextStepBtn.getStyleClass().add("btn");
         nextStepBtn.setFont(customFont);
         nextStepBtn.setLayoutX(realWidth - 320);
-        nextStepBtn.setLayoutY(realWidth + 10);
+        nextStepBtn.setLayoutY(realWidth + 7);
 
         Button menuBtn = new Button("Menu");
         menuBtn.getStyleClass().add("btn");
         menuBtn.setFont(customFont);
         menuBtn.setLayoutX(realWidth - 480);
-        menuBtn.setLayoutY(realWidth + 10);
+        menuBtn.setLayoutY(realWidth + 7);
 
         Pane pane = new Pane();
         pane.getChildren().addAll(generationCounter, pauseBtn, nextStepBtn, menuBtn);

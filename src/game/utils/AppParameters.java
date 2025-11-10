@@ -2,12 +2,9 @@ package game.utils;
 
 import game.gameScene.Cell;
 
-public class AppParameters {
-    private static final int width = 900;
-    public static final int SIZE = 100;
 
-    public static final double cellSize = (double) width/SIZE;
-    public static final double realWidth = cellSize * SIZE; // Tamaño real del Canvas luego de calcular el tamaño de la célula
+public class AppParameters {
+    public static final int appInitialWidth = 900;
 
     public static Cell[][] cellMatrix;
     public static Cell[][] copyMatrix;
