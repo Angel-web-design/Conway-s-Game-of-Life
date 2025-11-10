@@ -98,25 +98,34 @@ public class MenuScene {
         loadButton.setOnAction(_ -> {
             try {
                 var Matrix = SaveManager.loadMatrix("save.dat");
+
+                int size;
+                String message;
+                String btnLabel = "Start";
+
+                if(Matrix == null){
+                    size = simulationSizeInput.getValue();
+                    message = "The position you're trying to access is either corrupted or hasn't been created yet. " +
+                            "You can start the simulation with a randomized position instead.";
+                } else {
+                    size = Matrix.length;
+                    message = String.format("The %d x %d position has been correctly loaded.", size, size);
+                }
+
                 Scene gameScene = new GameScene().getGameScene(
                         stage,
                         menuScene,
                         (double) fpsInput.getValue(),
-                        simulationSizeInput.getValue(),
+                        size,
                         Matrix);
                 gameScene.getStylesheets().add(StyleSheet);
 
-                if(Matrix == null){
-                    Scene messageScene = new MessageScene().getScene(
-                            stage,
-                            gameScene,
-                            "The initial position hasn't been saved or it's corrupted. You can start the simulation with a randomized position instead.",
-                            "Start");
-                    stage.setScene(messageScene);
-                } else {
-                    stage.setScene(gameScene); // Cambia la escena actual por gameScene
-                }
-                //System.out.println(Arrays.deepToString(Matrix));
+                Scene messageScene = new MessageScene().getScene(
+                        stage,
+                        gameScene,
+                        message,
+                        btnLabel);
+                stage.setScene(messageScene);
 
 
             } catch (IOException | ClassNotFoundException e) {
