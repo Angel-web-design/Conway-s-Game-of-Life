@@ -5,6 +5,7 @@ import game.scenes.gameScene.Cell;
 
 public class AppParameters {
     public static final int appInitialWidth = 900;
+    public static final int appInitialHeight = 980;
 
     public static Cell[][] cellMatrix;
     public static Cell[][] copyMatrix;

@@ -7,14 +7,16 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import static game.utils.AppParameters.appInitialHeight;
 import static game.utils.AppParameters.appInitialWidth;
 import static game.utils.Assets.*;
 
 public class MessageScene {
-    public Scene getScene(Stage stage, Scene alternativeScene, String message, String btnText, Image img){
+    public Scene getScene(Stage stage, Scene alternativeScene, Scene parentScene, String message, String btnText, Image img){
 
         Canvas canvas = new Canvas();
         GraphicsContext gc = canvas.getGraphicsContext2D();
@@ -40,14 +42,23 @@ public class MessageScene {
         sceneButton.setFont(customFont);
         sceneButton.getStyleClass().add("btn");
 
-        VBox componentContainer = new VBox(50, canvas, sceneMessage, sceneButton);
+        Button returnButton = new Button("Return");
+        returnButton.setFont(customFont);
+        returnButton.getStyleClass().add("btn");
+
+        HBox buttonContainer = new HBox(50, returnButton, sceneButton);
+        buttonContainer.setAlignment(Pos.CENTER);
+
+        VBox componentContainer = new VBox(50, canvas, sceneMessage, buttonContainer);
         componentContainer.setAlignment(Pos.CENTER);
         componentContainer.getStyleClass().add("vbox");
 
-        Scene scene = new Scene(componentContainer, appInitialWidth, appInitialWidth);
+        Scene scene = new Scene(componentContainer, appInitialWidth, appInitialHeight);
         scene.getStylesheets().add(StyleSheet);
 
         sceneButton.setOnAction(_ -> stage.setScene(alternativeScene));
+
+        returnButton.setOnAction(_ -> stage.setScene(parentScene));
 
         return scene;
     }

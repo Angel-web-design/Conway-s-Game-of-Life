@@ -17,14 +17,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Arrays;
 
+import static game.utils.AppParameters.appInitialHeight;
 import static game.utils.AppParameters.appInitialWidth;
 import static game.utils.Assets.*;
 
 public class MenuScene {
     public Scene getMenuScene(Stage stage){
-        Canvas canvas = new Canvas(appInitialWidth, (double) appInitialWidth /3);
+        Canvas canvas = new Canvas(appInitialWidth, (double) appInitialHeight /3);
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.setImageSmoothing(false);
 
@@ -90,7 +90,7 @@ public class MenuScene {
         menuRoot.getStyleClass().add("vbox");
 
 
-        Scene menuScene = new Scene(menuRoot, appInitialWidth, appInitialWidth + 80);
+        Scene menuScene = new Scene(menuRoot, appInitialWidth, appInitialHeight);
         menuScene.getStylesheets().add(StyleSheet);
 
         playButton.setOnAction(_ -> {
@@ -135,6 +135,7 @@ public class MenuScene {
                 Scene messageScene = new MessageScene().getScene(
                         stage,
                         gameScene,
+                        menuScene,
                         message,
                         btnLabel,
                         img);

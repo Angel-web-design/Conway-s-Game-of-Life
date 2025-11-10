@@ -12,7 +12,8 @@ public class SaveManager {
             System.out.println("File saved correctly.");
         }
         catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("There was a problem when trying to save the position.");
+            // e.printStackTrace();
         }
     }
     public static Cell[][] loadMatrix(String filename) throws IOException, ClassNotFoundException {
@@ -22,8 +23,8 @@ public class SaveManager {
 
         }
         catch (IOException | ClassNotFoundException e) {
-            System.out.println("That initial position doesn't exists.");
-            e.printStackTrace();
+            System.out.println("That initial position doesn't exists or it's corrupted.");
+            // e.printStackTrace();
             return null;
         }
     }

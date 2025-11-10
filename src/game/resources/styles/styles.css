@@ -7,7 +7,7 @@
 }
 
 .spinner {
-    -fx-border-color: #bbfdff;
+    -fx-border-color: #67faff;
     -fx-border-width: 2px;
 }
 
@@ -24,7 +24,7 @@
 
 .spinner .increment-arrow-button .increment-arrow,
 .spinner .decrement-arrow-button .decrement-arrow {
-    -fx-background-color: #11676a;
+    -fx-background-color: #23bfc4;
 }
 
 .spinner .increment-arrow-button:hover .increment-arrow,
@@ -51,9 +51,9 @@
     -fx-border-color: #bbfdff;
 }
 .btn:hover {
-    -fx-background-color: #1dd0d6;
+    -fx-background-color: #23bfc4;
     -fx-text-fill: #fff;
-    -fx-border-color: #fff;
+    -fx-border-color: #cbdbfc;
 }
 .vbox {
     -fx-background-color: #126669;
