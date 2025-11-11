@@ -13,23 +13,19 @@
 
 .spinner .increment-arrow-button,
 .spinner .decrement-arrow-button {
-    -fx-background-color: #bbfdff;
+    -fx-background-color: #1dd0d6;
     -fx-cursor: hand;
+    transition: -fx-background-color 0.2s linear;
 }
 
 .spinner .increment-arrow-button:hover,
 .spinner .decrement-arrow-button:hover {
-    -fx-background-color: #1dd0d6;
+    -fx-background-color: #67faff;
 }
 
 .spinner .increment-arrow-button .increment-arrow,
 .spinner .decrement-arrow-button .decrement-arrow {
-    -fx-background-color: #23bfc4;
-}
-
-.spinner .increment-arrow-button:hover .increment-arrow,
-.spinner .decrement-arrow-button:hover .decrement-arrow {
-    -fx-background-color: #fff;
+    -fx-background-color: black;
 }
 
 .spinner .text-field {
@@ -38,21 +34,6 @@
     -fx-background-insets: 0;         /* quita las capas que crean la sombra */
     -fx-background-radius: 0;         /* bordes rectos */
     -fx-effect: none;   
-}
-
-.btn {
-    -fx-cursor: hand; 
-    -fx-background-color: #bbfdff;
-    -fx-text-fill: #11676a;
-    -fx-min-width: 150px;
-    transition: -fx-background-color 0.3s linear;
-    -fx-border-width: 2px;
-    -fx-border-color: #bbfdff;
-}
-.btn:hover {
-    -fx-background-color: #23bfc4;
-    -fx-text-fill: #fff;
-    -fx-border-color: #cbdbfc;
 }
 .btn-sprite {
     -fx-cursor: hand;

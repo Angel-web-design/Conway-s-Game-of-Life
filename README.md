@@ -68,7 +68,6 @@ or the simulation border, where some of them will become still lives or oscillat
 - [X]  Create a menu scene.
 - [X]  Add inputs to customize the simulation parameters.
 - [X]  Allow users to save and open custom initial positions.
-- [ ]  Add sound effects.
 - [ ]  Add the basic patterns and information scene.
 - [X]  Add the initial position editor.
 
