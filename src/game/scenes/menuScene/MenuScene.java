@@ -4,7 +4,9 @@ import game.cellConfigurations.SaveManager;
 import game.scenes.editorEscene.EditorScene;
 import game.scenes.gameScene.GameScene;
 import game.scenes.messageScene.MessageScene;
+import game.utils.ColorPalette;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -91,12 +93,19 @@ public class MenuScene {
         HBox inputContainer = new HBox(20, labelContainer, spinnerContainer);
         inputContainer.setAlignment(Pos.CENTER);
 
+        Button informationButton = new Button();
+        informationButton.setGraphic(getView(btnInformationImage, 50, true));
+        informationButton.getStyleClass().add("btn-sprite");
+        informationButton.setLayoutX(20);
+        informationButton.setLayoutY(20);
+
         VBox menuRoot = new VBox(50, canvas, buttonContainer, inputContainer);
         menuRoot.setAlignment(Pos.TOP_CENTER);
         menuRoot.getStyleClass().add("vbox");
 
 
-        Scene menuScene = new Scene(menuRoot, appInitialWidth, appInitialHeight);
+
+        Scene menuScene = new Scene(new Group(menuRoot, informationButton), appInitialWidth, appInitialHeight, ColorPalette.backgroundColor);
         menuScene.getStylesheets().add(StyleSheet);
 
         playButton.setOnAction(_ -> {
@@ -124,7 +133,7 @@ public class MenuScene {
                     img = notFoundImage;
                 } else {
                     size = Matrix.length;
-                    message = String.format("The %d x %d position has been correctly loaded.", size, size);
+                    message = String.format("The %d x %d position has been correctly loaded.", size - 2, size - 2);
                     img = successImage;
                 }
 

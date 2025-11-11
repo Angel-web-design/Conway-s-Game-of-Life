@@ -29,7 +29,7 @@
 }
 
 .spinner .text-field {
-    -fx-background-color: #fff; 
+    -fx-background-color: #cbdbfc;
     -fx-text-fill: black;
     -fx-background-insets: 0;         /* quita las capas que crean la sombra */
     -fx-background-radius: 0;         /* bordes rectos */
@@ -49,7 +49,6 @@
     -fx-scale-y: 0.9;
 }
 .vbox {
-    -fx-background-color: #126669;
     -fx-padding: 100 20 00 00;
 }
 .gameScene-pane {

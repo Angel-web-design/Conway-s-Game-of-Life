@@ -36,5 +36,5 @@ public class Assets {
     public static final Image btnContinueImage = getImage("/game/resources/sprites/buttons/btn-continue.png");
     public static final Image btnSaveImage = getImage("/game/resources/sprites/buttons/btn-save.png");
     public static final Image btnStepImage = getImage("/game/resources/sprites/buttons/btn-step.png");
-
+    public static final Image btnInformationImage = getImage("/game/resources/sprites/buttons/btn-info.png");
 }
