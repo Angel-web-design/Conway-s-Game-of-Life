@@ -62,7 +62,7 @@ public class SaveManager {
 
         // Filtros de extensión
         fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Archivos binarios (*.dat)", "*.dat")
+                new FileChooser.ExtensionFilter("Binary files (*.dat)", "*.dat")
         );
 
         // Mostrar el diálogo

@@ -104,7 +104,7 @@ public class MenuScene {
                     stage,
                     menuScene,
                     (double) fpsInput.getValue(),
-                    simulationSizeInput.getValue(),
+                    simulationSizeInput.getValue() + 2,
                     null);
             stage.setScene(gameScene); // Cambia la escena actual por gameScene
         });
@@ -119,7 +119,7 @@ public class MenuScene {
                 Image img;
 
                 if(Matrix == null){
-                    size = simulationSizeInput.getValue();
+                    size = simulationSizeInput.getValue() + 2;
                     message = "The position you're trying to access is either corrupted or hasn't been created yet. " +
                             "You can start the simulation with a randomized position instead.";
                     img = notFoundImage;
@@ -141,7 +141,7 @@ public class MenuScene {
         });
 
         editorButton.setOnAction(_ -> {
-            Scene editorScene = new EditorScene().getScene(stage, simulationSizeInput.getValue(), fpsInput.getValue(), menuScene);
+            Scene editorScene = new EditorScene().getScene(stage, simulationSizeInput.getValue() + 2, fpsInput.getValue(), menuScene);
             stage.setScene(editorScene);
         });
 
