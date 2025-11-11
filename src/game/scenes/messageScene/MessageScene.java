@@ -1,6 +1,5 @@
 package game.scenes.messageScene;
 
-import game.utils.ColorPalette;
 import game.utils.Components;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -13,6 +12,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import static game.utils.ColorPalette.backgroundColor;
 import static game.utils.AppParameters.appInitialHeight;
 import static game.utils.AppParameters.appInitialWidth;
 import static game.utils.Assets.*;
@@ -56,7 +56,7 @@ public class MessageScene {
         componentContainer.setAlignment(Pos.CENTER);
         componentContainer.getStyleClass().add("vbox");
 
-        Scene scene = new Scene(componentContainer, appInitialWidth, appInitialHeight, ColorPalette.backgroundColor);
+        Scene scene = new Scene(componentContainer, appInitialWidth, appInitialHeight, backgroundColor);
         scene.getStylesheets().add(StyleSheet);
 
         sceneButton.setOnAction(_ -> stage.setScene(alternativeScene));
