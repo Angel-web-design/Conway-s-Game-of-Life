@@ -3,6 +3,7 @@ package game.scenes.menuScene;
 import game.cellConfigurations.SaveManager;
 import game.scenes.editorEscene.EditorScene;
 import game.scenes.gameScene.GameScene;
+import game.scenes.informationScene.InformationScene;
 import game.scenes.messageScene.MessageScene;
 import game.utils.ColorPalette;
 import javafx.geometry.Pos;
@@ -131,6 +132,11 @@ public class MenuScene {
         editorButton.setOnAction(_ -> {
             Scene editorScene = new EditorScene().getScene(stage, simulationSizeInput.getValue() + 2, fpsInput.getValue(), menuScene);
             stage.setScene(editorScene);
+        });
+
+        informationButton.setOnAction(_ -> {
+            Scene informationScene = InformationScene.getScene(stage, menuScene);
+            stage.setScene(informationScene);
         });
 
         return menuScene;

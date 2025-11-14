@@ -61,8 +61,48 @@
     -fx-background-color: #23bfc4;
 }
 .message {
-    -fx-pref-width: 500px;
-    -fx-text-alignment: center;
     -fx-text-fill: #bbfdff;
     -fx-wrap-text: true;
+}
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-pane .content {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar {
+    -fx-background-color: transparent;
+    -fx-pref-width: 15px;
+    -fx-cursor: hand;
+}
+
+.scroll-bar .track {
+    -fx-background-color: #126669;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #23bfc4;
+    -fx-background-insets: 0px;
+    -fx-background-radius: 0px;
+}
+
+/* Styling the scroll bar buttons and arrows */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: #23bfc4;
+    -fx-padding: 15 0 0 0;
+    -fx-background-insets: 0px;
+    -fx-background-radius: 0px;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-background-color: transparent;
 }

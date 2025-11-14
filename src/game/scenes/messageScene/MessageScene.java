@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import static game.utils.AppParameters.*;
@@ -34,6 +35,8 @@ public class MessageScene {
         Label sceneMessage = new Label(message);
         sceneMessage.setFont(customFont);
         sceneMessage.getStyleClass().add("message");
+        sceneMessage.setPrefWidth(appInitialWidth * 0.8);
+        sceneMessage.setTextAlignment(TextAlignment.CENTER);
 
         Button sceneButton = new Button();
         sceneButton.setGraphic(Components.getView(btnContinueImage, buttonSize, true));
