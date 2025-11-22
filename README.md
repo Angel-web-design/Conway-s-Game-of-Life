@@ -75,7 +75,9 @@ or the simulation border, where some of them will become still lives or oscillat
 
 > [!IMPORTANT]
 > **The project uses JDK 24**
+> 
 > **The project uses Gradle v.8.14**
+> 
 > **The project uses the JavaFX sdk v25.0.1**
 
 <hr>
@@ -84,9 +86,20 @@ or the simulation border, where some of them will become still lives or oscillat
 
 Use the Run task from gradle inside Intellij, or use gradlew (open the terminal inside the project's directory): 
 
-``` java
+Bash:
+``` bash
 .\gradlew run
 ```
-The first time, Gradle will need internet connection to download all the dependencies
+
+Zsh:
+``` bash
+./gradlew run
+```
+
+Shell:
+``` shell
+gradlew run
+```
+During the first execution, Gradle will need an internet connection to download all the dependencies for the project.
 
 

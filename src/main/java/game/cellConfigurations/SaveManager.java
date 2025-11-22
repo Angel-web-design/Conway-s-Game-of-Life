@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 
 public class SaveManager {
     private static final Logger log = Logger.getLogger(SaveManager.class.getName());
+    private static final String mainDirectory = System.getProperty("user.home");
 
     public static void saveMatrix(Cell[][] matrix, Stage stage) throws IOException {
         var file = saveFile(stage);
@@ -46,7 +47,8 @@ public class SaveManager {
     public static File loadFile(Stage stage){
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select a File");
-        fileChooser.setInitialDirectory(new File("C:/"));
+
+        fileChooser.setInitialDirectory(new File(mainDirectory));
 
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Initial Positions", "*.dat")
@@ -58,7 +60,7 @@ public class SaveManager {
     public static File saveFile(Stage stage){
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Initial Position");
-        fileChooser.setInitialDirectory(new File("C:/"));
+        fileChooser.setInitialDirectory(new File(mainDirectory));
 
         fileChooser.setInitialFileName("initial_state.dat"); // Nombre sugerido
 
